@@ -106,7 +106,7 @@
 
             <button type="submit">Cadastrar</button><br>
 
-            <label for="adicionar-energia"></label>   
+            <label for="adicionar-energia"></label> <br>  
             <input type="number" name="energia"><br>
 
             <button type="submit">Atualizar energia</button>
@@ -121,7 +121,7 @@
                 <p><strong>Nome do robô:</strong> <?= $robo ?></p>
                 <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
                 <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
-                <p><strong>Energia do robô: </strong> <?= $energia?></p>
+                <p><strong>Energia do robô: </strong> <?= $energiaInicial?></p>
                 <p><strong>Nome do operador:</strong> <?= $operador ?></p>
             </div>
         </div>
