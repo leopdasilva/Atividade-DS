@@ -8,6 +8,8 @@
 
     $json = json_encode($caminho);
 
+
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $robo = $_POST['robo'] ?? "";
         $modelo = $_POST['modelo'] ?? "";
@@ -34,12 +36,12 @@
         }
     }
 
-    // abstract class Robo {
-    //     public function exibirStatus() {
-    //         public $robo;
+    abstract class Robo {
+         public function exibirStatus() {
+             public $robo;
 
-    //     }
-    // }
+         }
+     }
 ?>
 
 <!DOCTYPE html>
@@ -53,19 +55,19 @@
     <h2>Cadastro de Robôs</h2>
     <form action="POST">
         <label for="robo">Nome do Robô: </label>
-        <input type="text" name="robo" required>
+        <input type="text" name="robo" required><br><br>
 
         <label for="modelo">Modelo do Robô: </label>
         <select name="modelo" id="idmodelo">
             <option value="explorador">Explorador</option>
             <option value="engenheiro">Engenheiro</option>
             <option value="defensor">Defensor</option>
-        </select>
+        </select><br><br>
 
         <label for="operador">Nome do operador: </label>
-        <input type="text" name="operador" required>
+        <input type="text" name="operador" required><br><br>
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Cadastrar</button><br>
     </form>
 
     <?php if ($mensagem != "") { ?>
