@@ -3,10 +3,12 @@
     $robo = "";
     $modelo = "";
     $operador = "";
+    $funcao = "";
+    $energiaInicial = 0;
 
     $caminho = __DIR__ . "/robos.json";
 
-    $json = json_encode($caminho);
+    $json = json_encode($caminho, true);
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,18 +16,28 @@
         $modelo = $_POST['modelo'] ?? "";
         $operador = $_POST['operador'] ?? "";
 
+        $novoRobo = [
+            $robo => 'robo',
+            $modelo => 'modelo',
+            $funcao => 'funcao',
+            $operador => 'operador'
+        ];
+
         if ($robo != "" && $modelo != "" && $operador != "") {
             $mensagem = "Cadastro realizado com sucesso!";
 
             if ($modelo == "explorador") {
                 $energiaInicial = 100;
                 $potencia = 20;
+                $funcao = "Investigar planetas";
             } else if ($modelo == "engenheiro") {
                 $energiaInicial = 120;
                 $potencia = 15;
+                $funcao = "Reparar equipamentos";
             } else if ($modelo == "defensor") {
                 $energiaInicial = 150;
                 $potencia = 30;
+                $funcao = "Proteger a estação";
             }
 
         } else {
@@ -34,7 +46,7 @@
     }
 
     // abstract class Robo {
-    //     public class _construct() {
+    //     public function _construct() {
 
     //     }
 
@@ -56,32 +68,36 @@
     <title>Central de Robôs | PHP</title>
 </head>
 <body>
-    <h2>Cadastro de Robôs</h2>
-    <form method="POST">
-        <label for="robo">Nome do Robô: </label>
-        <input type="text" name="robo" required><br><br>
+    <div class="card-cadastro">
+        <h2>Cadastro de Robôs</h2>
+        <form method="POST">
+            <label for="robo">Nome do Robô: </label>
+            <input type="text" name="robo" required><br><br>
 
-        <label for="modelo">Modelo do Robô: </label>
-        <select name="modelo" id="idmodelo">
-            <option value="explorador">Explorador</option>
-            <option value="engenheiro">Engenheiro</option>
-            <option value="defensor">Defensor</option>
-        </select><br><br>
+            <label for="modelo">Modelo do Robô: </label>
+            <select name="modelo" id="idmodelo">
+                <option value="explorador">Explorador</option>
+                <option value="engenheiro">Engenheiro</option>
+                <option value="defensor">Defensor</option>
+            </select><br><br>
 
-        <label for="operador">Nome do operador: </label>
-        <input type="text" name="operador" required><br><br>
+            <label for="operador">Nome do operador: </label>
+            <input type="text" name="operador" required><br><br>
 
-        <button type="submit">Cadastrar</button><br>
-    </form>
+            <button type="submit">Cadastrar</button><br>
+        </form>
+    </div>
 
     <?php if ($mensagem != "") { ?>
-        <p> <?= $mensagem ?> </p>
-
-        <div>
-            <h2>Robôs cadastrados</h2>
-            <p><strong>Nome do robô:</strong> <?= $robo ?></p>
-            <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
-            <p><strong>Nome do operador:</strong> <?= $operador ?></p>
+        <div class="card-resultado">
+            <p> <?= $mensagem ?> </p>
+            <div>
+                <h2>Robôs cadastrados</h2>
+                <p><strong>Nome do robô:</strong> <?= $robo ?></p>
+                <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
+                <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
+                <p><strong>Nome do operador:</strong> <?= $operador ?></p>
+            </div>
         </div>
 
     <?php } ?>
