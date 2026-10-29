@@ -106,8 +106,8 @@
 
             <button type="submit">Cadastrar</button><br>
 
-            <label for="adicionar-energia"></label> <br>  
-            <input type="number" name="energia"><br>
+            <label for="adicionar-energia">Atualizar energia</label> <br>  
+            <input type="number" name="energia"><br><br>
 
             <button type="submit">Atualizar energia</button>
         </form>
