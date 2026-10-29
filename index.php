@@ -18,7 +18,6 @@
         $robo = $_POST['robo'] ?? "";
         $modelo = $_POST['modelo'] ?? "";
         $operador = $_POST['operador'] ?? "";
-        $enegia = $_POST['energia'] ?? "";
 
         $novoRobo = [
             $robo => 'robo',
@@ -44,15 +43,20 @@
                 $funcao = "Proteger a estação";
             }
 
+
+        } else {
+            $mensagem = "Cadastro inválido, faltam dados!";
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $enegia = $_GET['energia'] ?? "";
+
             if ($energia > 200) {
                 $msgEnergia = "Erro! Engergia está no limite!";
             } else {
                 $msgEnergia = "Energia Atualizada!";
                 $EnergiaAtualizada = $energiaInicial + $energia;
             }
-
-        } else {
-            $mensagem = "Cadastro inválido, faltam dados!";
         }
     }
 
@@ -112,26 +116,7 @@
             </div>
         </div>
 
-        <form method="POST">
-            <label for="adicionar-energia"></label>   
-            <input type="number" name="energia">
-
-            <button type="submit">Atualizar energia</button>
-        </form>
-    <?php } else  if ($msgEnergia != "") { ?>
-        <div class="card-resultado">
-            <p> <?= $mensagem ?> </p>
-            <div>
-                <h2>Robôs cadastrados</h2>
-                <p><strong>Nome do robô:</strong> <?= $robo ?></p>
-                <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
-                <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
-                <p><strong>Energia do robô: </strong> <?= $energiaAtualizada?></p>
-                <p><strong>Nome do operador:</strong> <?= $operador ?></p>
-            </div>
-        </div>
-
-        <form method="POST">
+        <form method="GET">
             <label for="adicionar-energia"></label>   
             <input type="number" name="energia">
 
