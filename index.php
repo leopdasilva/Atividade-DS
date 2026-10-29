@@ -107,7 +107,7 @@
                 <p><strong>Nome do robô:</strong> <?= $robo ?></p>
                 <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
                 <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
-                <p><strong>Energia do robô: </strong> <?= $enegia?></p>
+                <p><strong>Energia do robô: </strong> <?= $energiaInicial?></p>
                 <p><strong>Nome do operador:</strong> <?= $operador ?></p>
             </div>
         </div>
@@ -126,7 +126,7 @@
                 <p><strong>Nome do robô:</strong> <?= $robo ?></p>
                 <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
                 <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
-                <p><strong>Energia do robô: </strong> <?= $enegia?></p>
+                <p><strong>Energia do robô: </strong> <?= $energiaAtualizada?></p>
                 <p><strong>Nome do operador:</strong> <?= $operador ?></p>
             </div>
         </div>
