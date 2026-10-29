@@ -4,7 +4,10 @@
     $modelo = "";
     $operador = "";
     $funcao = "";
+    $energiaAtualizada = 0;
     $energiaInicial = 0;
+    $energia = 0;
+    $msgEnergia = "";
 
     $caminho = __DIR__ . "/robos.json";
 
@@ -15,6 +18,7 @@
         $robo = $_POST['robo'] ?? "";
         $modelo = $_POST['modelo'] ?? "";
         $operador = $_POST['operador'] ?? "";
+        $enegia = $_POST['energia'] ?? "";
 
         $novoRobo = [
             $robo => 'robo',
@@ -38,6 +42,13 @@
                 $energiaInicial = 150;
                 $potencia = 30;
                 $funcao = "Proteger a estação";
+            }
+
+            if ($energia > 200) {
+                $msgEnergia = "Erro! Engergia está no limite!";
+            } else {
+                $msgEnergia = "Energia Atualizada!";
+                $EnergiaAtualizada = $energiaInicial + $energia;
             }
 
         } else {
@@ -96,17 +107,36 @@
                 <p><strong>Nome do robô:</strong> <?= $robo ?></p>
                 <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
                 <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
-                <p><strong>Energia do robô: </strong> <?= $energiaInicial?></p>
+                <p><strong>Energia do robô: </strong> <?= $enegia?></p>
                 <p><strong>Nome do operador:</strong> <?= $operador ?></p>
             </div>
         </div>
 
         <form method="POST">
+            <label for="adicionar-energia"></label>   
+            <input type="number" name="energia">
 
+            <button type="submit">Atualizar energia</button>
+        </form>
+    <?php } else  if ($msgEnergia != "") { ?>
+        <div class="card-resultado">
+            <p> <?= $mensagem ?> </p>
+            <div>
+                <h2>Robôs cadastrados</h2>
+                <p><strong>Nome do robô:</strong> <?= $robo ?></p>
+                <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
+                <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
+                <p><strong>Energia do robô: </strong> <?= $enegia?></p>
+                <p><strong>Nome do operador:</strong> <?= $operador ?></p>
+            </div>
+        </div>
 
+        <form method="POST">
+            <label for="adicionar-energia"></label>   
+            <input type="number" name="energia">
+
+            <button type="submit">Atualizar energia</button>
         </form>
     <?php } ?>
-
-    
 </body>
 </html>
