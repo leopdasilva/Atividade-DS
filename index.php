@@ -96,11 +96,17 @@
                 <p><strong>Nome do robô:</strong> <?= $robo ?></p>
                 <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
                 <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
+                <p><strong>Energia do robô: </strong> <?= $energiaInicial?></p>
                 <p><strong>Nome do operador:</strong> <?= $operador ?></p>
             </div>
         </div>
 
+        <form method="POST">
+
+
+        </form>
     <?php } ?>
 
+    
 </body>
 </html>
