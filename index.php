@@ -36,12 +36,12 @@
         }
     }
 
-    abstract class Robo {
-         public function exibirStatus() {
-             public $robo;
+    // abstract class Robo {
+    //      public function exibirStatus() {
+    //          public $robo;
 
-         }
-     }
+    //      }
+    // }
 ?>
 
 <!DOCTYPE html>
