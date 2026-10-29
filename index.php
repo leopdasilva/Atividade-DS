@@ -8,10 +8,13 @@
     $energiaInicial = 0;
     $energia = 0;
     $msgEnergia = "";
+    $potencia = 0;
 
-    $caminho = __DIR__ . "/robos.json";
+    $caminhoJson = __DIR__ . "/robos.json";
 
-    $json = json_encode($caminho, true);
+    if (!file_exists($caminhoJson)) {
+        file_put_contents($caminhoJson, json_encode([]));
+    }
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,11 +23,16 @@
         $operador = $_POST['operador'] ?? "";
 
         $novoRobo = [
-            $robo => 'robo',
-            $modelo => 'modelo',
-            $funcao => 'funcao',
-            $operador => 'operador'
+            'robo' => $robo,
+            'modelo' => ucfirst($modelo),
+            'funcao' => $funcao,
+            'operador' => $operador
         ];
+
+        $dadosAtuais = json_decode(file_get_contents($caminhoJson), true) ?? [];
+
+        file_put_contents($caminhoJson, json_encode($dadosAtuais, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
 
         if ($robo != "" && $modelo != "" && $operador != "") {
             $mensagem = "Cadastro realizado com sucesso!";
@@ -43,21 +51,18 @@
                 $funcao = "Proteger a estação";
             }
 
-
-        } else {
-            $mensagem = "Cadastro inválido, faltam dados!";
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            $enegia = $_GET['energia'] ?? "";
-
             if ($energia > 200) {
                 $msgEnergia = "Erro! Engergia está no limite!";
             } else {
                 $msgEnergia = "Energia Atualizada!";
                 $EnergiaAtualizada = $energiaInicial + $energia;
             }
+
+        } else {
+            $mensagem = "Cadastro inválido, faltam dados!";
         }
+
+
     }
 
     // abstract class Robo {
@@ -100,6 +105,11 @@
             <input type="text" name="operador" required><br><br>
 
             <button type="submit">Cadastrar</button><br>
+
+            <label for="adicionar-energia"></label>   
+            <input type="number" name="energia"><br>
+
+            <button type="submit">Atualizar energia</button>
         </form>
     </div>
 
@@ -111,17 +121,13 @@
                 <p><strong>Nome do robô:</strong> <?= $robo ?></p>
                 <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
                 <p><strong>Funcão do robô: </strong> <?= $funcao ?></p>
-                <p><strong>Energia do robô: </strong> <?= $energiaInicial?></p>
+                <p><strong>Energia do robô: </strong> <?= $energia?></p>
                 <p><strong>Nome do operador:</strong> <?= $operador ?></p>
             </div>
         </div>
-
-        <form method="GET">
-            <label for="adicionar-energia"></label>   
-            <input type="number" name="energia">
-
-            <button type="submit">Atualizar energia</button>
-        </form>
     <?php } ?>
+
+
+    
 </body>
 </html>
