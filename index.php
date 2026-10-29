@@ -4,9 +4,11 @@
     $modelo = "";
     $operador = "";
 
-    $caminho = __DIR__ . "robos.json";
+    $caminho = __DIR__ . "/robos.json";
 
     $json = json_encode($caminho);
+
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $robo = $_POST['robo'] ?? "";
@@ -32,12 +34,19 @@
         }
     }
 
-    // abstract class Robo {
-    //      public function exibirStatus() {
-    //          public $robo;
+    abstract class Robo {
+        public class _construct() {
+            
+        }
 
-    //      }
-    // }
+        public function exibirStatus() {
+            
+        }
+
+        public function recarregar() {
+            $energia = $energiaInicial + 10;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
