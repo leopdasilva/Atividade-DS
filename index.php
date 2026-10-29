@@ -104,12 +104,7 @@
             <label for="operador">Nome do operador: </label>
             <input type="text" name="operador" required><br><br>
 
-            <button type="submit">Cadastrar</button><br>
-
-            <label for="adicionar-energia">Atualizar energia</label> <br>  
-            <input type="number" name="energia"><br><br>
-
-            <button type="submit">Atualizar energia</button>
+            <button type="submit">Cadastrar</button><br><br>
         </form>
     </div>
 
