@@ -9,7 +9,6 @@
     $json = json_encode($caminho);
 
 
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $robo = $_POST['robo'] ?? "";
         $modelo = $_POST['modelo'] ?? "";
@@ -34,19 +33,19 @@
         }
     }
 
-    abstract class Robo {
-        public class _construct() {
-            
-        }
+    // abstract class Robo {
+    //     public class _construct() {
 
-        public function exibirStatus() {
-            
-        }
+    //     }
 
-        public function recarregar() {
-            $energia = $energiaInicial + 10;
-        }
-    }
+    //     public function exibirStatus() {
+            
+    //     }
+
+    //     public function recarregar() {
+    //         $energia = $energiaInicial + 10;
+    //     }
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +57,7 @@
 </head>
 <body>
     <h2>Cadastro de Robôs</h2>
-    <form action="POST">
+    <form method="POST">
         <label for="robo">Nome do Robô: </label>
         <input type="text" name="robo" required><br><br>
 
