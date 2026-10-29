@@ -34,12 +34,12 @@
         }
     }
 
-    abstract class Robo {
-        public function exibirStatus() {
-            public $robo;
+    // abstract class Robo {
+    //     public function exibirStatus() {
+    //         public $robo;
 
-        }
-    }
+    //     }
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
         </select>
 
         <label for="operador">Nome do operador: </label>
-        <input type="text" name="opeador" required>
+        <input type="text" name="operador" required>
 
         <button type="submit">Cadastrar</button>
     </form>
@@ -71,6 +71,12 @@
     <?php if ($mensagem != "") { ?>
         <p><?=$mensagem ?> </p>
 
+        <div>
+            <h2>Robôs cadastrados</h2>
+            <p><strong>Nome do robô:</strong> <?= $robo ?></p>
+            <p><strong>Modelo do robô:</strong> <?= $modelo ?></p>
+            <p><strong>Nome do operador:</strong> <?= $operador ?></p>
+        </div>
 
     <?php } ?>
 </body>
