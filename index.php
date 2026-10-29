@@ -8,12 +8,10 @@
 
     $json = json_encode($caminho);
 
-
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $robo = $_POST['robo'] ?? "";
         $modelo = $_POST['modelo'] ?? "";
-        $operador = $post['operador'] ?? "";
+        $operador = $_POST['operador'] ?? "";
 
         if ($robo != "" && $modelo != "" && $operador != "") {
             $mensagem = "Cadastro realizado com sucesso!";
@@ -28,8 +26,6 @@
                 $energiaInicial = 150;
                 $potencia = 30;
             }
-
-
 
         } else {
             $mensagem = "Cadastro inválido, faltam dados!";
@@ -71,7 +67,7 @@
     </form>
 
     <?php if ($mensagem != "") { ?>
-        <p><?=$mensagem ?> </p>
+        <p> <?= $mensagem ?> </p>
 
         <div>
             <h2>Robôs cadastrados</h2>
@@ -81,5 +77,6 @@
         </div>
 
     <?php } ?>
+
 </body>
 </html>
